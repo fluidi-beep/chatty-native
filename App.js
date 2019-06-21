@@ -1,3 +1,5 @@
+import "./dev_config/ReactotronConfig";
+import Reactotron from "reactotron-react-native";
 import { AppLoading } from "expo";
 import { Asset } from "expo-asset";
 import * as Font from "expo-font";

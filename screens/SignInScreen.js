@@ -1,10 +1,22 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 
-const SignIn = () => (
-  <View>
-    <Text>Sign in</Text>
-  </View>
-);
+class SignInScreen extends React.Component {
+  static navigationOptions = {
+    title: "Please sign in"
+  };
+  render() {
+    return (
+      <View>
+        <Button title="Sign in!" onPress={this._signInAsync} />
+      </View>
+    );
 
-export default SignIn;
+    _signInAsync = async () => {
+      await AsyncStorage.setItem("userToken", "abc");
+      this.props.navigation.navigate("App");
+    };
+  }
+}
+
+export default SignInScreen;
