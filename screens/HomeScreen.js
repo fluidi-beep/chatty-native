@@ -15,7 +15,7 @@ import { MonoText } from "../components/StyledText";
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text>Chatty</Text>
+      <Text stlye={styles.titleText}>Chatty</Text>
       <View style={styles.tabBarInfoContainer}>
         <View
           style={[styles.codeHighlightContainer, styles.navigationFilename]}
@@ -71,7 +71,8 @@ function handleHelpPress() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "skyblue",
+    margin: 50
   },
   developmentModeText: {
     marginBottom: 20,
