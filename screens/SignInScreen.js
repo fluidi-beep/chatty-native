@@ -22,6 +22,7 @@ class SignInScreen extends React.Component {
             .then(res => res.json())
             .then(resJson => {
                 console.log('RES ', resJson)
+                this._insertTokenToLocalStorage(resJson.token)
                 // AsyncStorage.setItem('userToken', res.data.token)
             })
             .catch(err => {
