@@ -7,33 +7,32 @@ class SignInScreen extends React.Component {
     }
 
     _signInAsync = async () => {
-        fetch(`${process.env.REACT_APP_USERS_DATABASE}/api/auth/login`, {
+        // fetch(`${process.env.REACT_APP_USERS_DATABASE}/api/auth/login`, {
+        fetch(`https://chatty-users.herokuapp.com/api/auth/login`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username: 'Native',
-                password: 'Native'
+                username: 'username',
+                password: 'password'
             })
         })
-            .then(res => {
-                console.log(res)
-                AsyncStorage.setItem('userToken', res.data.token)
+            .then(res => res.json())
+            .then(resJson => {
+                console.log('RES ', resJson)
+                // AsyncStorage.setItem('userToken', res.data.token)
             })
             .catch(err => {
-                console.log(JSON.stringify(err))
+                console.log('ERROR: ', JSON.stringify(err))
             })
-        if (typeof AsyncStorage.getItem('userToken') === 'string') {
-            this.props.navigation.navigate('App')
-        } else {
-            console.log('invalid token')
-        }
     }
 
     _insertTokenToLocalStorage = async token => {
-        await AsyncStorage.setItem('userToken', token)
+        await AsyncStorage.setItem('userToken', token).then(
+            console.log('did it ')
+        )
     }
 
     render() {
